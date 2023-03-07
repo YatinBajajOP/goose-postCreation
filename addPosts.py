@@ -21,6 +21,8 @@ CONFIG = {
   "auth_provider_x509_cert_url": os.getenv("auth_provider_x509_cert_url"),
   "client_x509_cert_url": os.getenv("client_x509_cert_url")
 }
+
+print(CONFIG)
 # Initialize Firebase app
 cred = credentials.Certificate(CONFIG)
 firebase_admin.initialize_app(cred, {
@@ -38,8 +40,8 @@ data = df.to_dict(orient="records")
 
 # Upload data to Firebase Realtime Database with a 5-second delay between each record
 ref = db.collection("posts")
-for i, record in enumerate(data):
-    delay = random.randint(2, 5)
-    ref.add(record)
-    print(f"Post {i} added.")
-    time.sleep(delay)
+# for i, record in enumerate(data):
+#     delay = random.randint(2, 5)
+#     ref.add(record)
+#     print(f"Post {i} added.")
+#     time.sleep(delay)
