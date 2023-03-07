@@ -1,5 +1,4 @@
 pandas
 firebase_admin
 python-dotenv
-random
-time
+python-time
