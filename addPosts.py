@@ -24,7 +24,7 @@ import random
 
 # print(CONFIG)
 # Initialize Firebase app
-cred = credentials.Certificate("./etc/secrets/config.json")
+cred = credentials.Certificate("/etc/secrets/config.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://goose-village.firebaseio.com'
 })
