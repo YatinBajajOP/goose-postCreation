@@ -24,7 +24,7 @@ import random
 
 # print(CONFIG)
 # Initialize Firebase app
-cred = credentials.Certificate("/etc/secrets/config.json")
+cred = credentials.Certificate("./etc/secrets/config.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://goose-village.firebaseio.com'
 })
@@ -38,10 +38,10 @@ df = pd.read_csv("postData.csv")
 data = df.to_dict(orient="records")
 # print(data)
 
-# Upload data to Firebase Realtime Database with a 5-second delay between each record
+# # Upload data to Firebase Realtime Database with a 5-second delay between each record
 ref = db.collection("posts")
-# for i, record in enumerate(data):
-#     delay = random.randint(2, 5)
-#     ref.add(record)
-#     print(f"Post {i} added.")
-#     time.sleep(delay)
+for i, record in enumerate(data):
+    delay = random.randint(2, 5)
+    ref.add(record)
+    print(f"Post {i} added.")
+    time.sleep(delay)
