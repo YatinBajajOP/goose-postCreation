@@ -10,7 +10,7 @@ import hashlib
 from datetime import datetime, timedelta
 
 
-CONFIG_FILE_PATH = "./etc/secrets/config.json"
+CONFIG_FILE_PATH = "/etc/secrets/config.json"
 
 # Bot user ids
 sloane_bots = ["uMnThhndiub8FI9u5VdSzdoaOPW2",
