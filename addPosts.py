@@ -77,24 +77,6 @@ def get_random_element(my_list):
     else:
         return random.choice(my_list)
 
-def generate_unique_hash(length):
-    # Get the current timestamp
-    timestamp = str(time.time())
-
-    # Create a new SHA256 hash object
-    sha256_hash = hashlib.sha256()
-
-    # Update the hash object with the timestamp
-    sha256_hash.update(timestamp.encode('utf-8'))
-
-    # Get the hexadecimal representation of the hash value
-    hash_value = sha256_hash.hexdigest()
-
-    # Truncate the hash value to the desired length
-    truncated_hash = hash_value[:length]
-
-    return truncated_hash
-
 st.title("Welcome! Let's create posts")
 key = st.text_input("Enter the private key ID of firebase", type="password")
 
@@ -170,7 +152,7 @@ if key != "":
 
                         for i, record in enumerate(records):
                             user_ref = get_random_element(users)
-                            record['req_id'] = generate_unique_hash(15)
+                            record['req_id'] = datetime.now().strftime("botpost%d%m%y%H%M%S")
                             doc_ref = db.collection('requests').document(record['req_id'])
                             snap = db.collection("user").document(user_ref).get()
                             community_list = snap.get("community_list")
